@@ -1,4 +1,4 @@
-nginx-contegix
+nginx setup
 ==============
 
-Developing the new Nginx Contegix Standards
+So my work brought me a project to develop our standards of deployment, and I did that by scripting and automating it the best I could.
