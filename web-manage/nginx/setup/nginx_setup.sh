@@ -756,7 +756,12 @@ echo "Creating vhost-template.conf..."
 
 cat << EOF > /etc/nginx/templates.d/vhosts.d/vhost-template.conf
         server {
+                #IPv4
                 listen IP_ADDRESS:80;
+                
+                #IPv6 - Uncomment line below to enable ipv6 support
+                #listen [::]:80;
+                
                 server_name     HOST_NAME.DOMAIN_NAME;
 
                 #To enable HTTPS, uncomment this line.
@@ -781,7 +786,13 @@ echo "Creating vhost-template-ssl.conf..."
 
 cat << EOF > /etc/nginx/templates.d/vhosts.d/vhost-template-ssl.conf
     server {
+        #IPv4
         listen IP_ADDRESS:443 ssl;
+        
+        #IPv6 - Uncomment line below to enable IPv6
+        #listen [::]:443 ssl;
+        
+        
         server_name     HOST_NAME.DOMAIN_NAME;
         
         ssl on;
@@ -843,7 +854,13 @@ cat << EOF > /etc/nginx/templates.d/vhosts.d/includes/vhost-template.conf
             include fastcgi_params;
     }
 
-    # location / {
+    location / {
+
+    #enable for wordpress pretty URLs
+    #try_files $uri $uri/ /index.php?$args;
+
+
+    #enable for proxy to Atlassian or J2EE applications
     #     proxy_read_timeout 300;
     #     proxy_connect_timeout 300;
     #     proxy_redirect off;
@@ -853,7 +870,7 @@ cat << EOF > /etc/nginx/templates.d/vhosts.d/includes/vhost-template.conf
     #     proxy_set_header    X-Real-IP     \$remote_addr;
             
     #     proxy_pass http://j2ee.HOST_NAME.DOMAIN_NAME:8009;
-    # }
+    }
 
 
 EOF

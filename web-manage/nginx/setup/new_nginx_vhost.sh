@@ -98,5 +98,7 @@ fi
 # check the nginx config
 /usr/sbin/nginx -t 2>&1 && echo -e "\n nginx config looks good. restart nginx when ready.\n"
 
+echo "If IPv6 needs to be enabled on the vhost, navigate to the vhost and uncomment the 'listen' line."
+
 
 ## EOF
